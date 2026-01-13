@@ -8,8 +8,8 @@ import { v1Router } from "@/routers/v1";
 const app = express();
 
 app.use(morgan("dev"));
-
 app.use("api/v1", v1Router);
+app.use(express.json());
 
 app.use(errorHandler);
 export { app };
