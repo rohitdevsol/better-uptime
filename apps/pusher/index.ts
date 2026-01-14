@@ -1,17 +1,27 @@
 import { prisma } from "@repo/database";
-setInterval(() => {
-  async function getWebsites() {
-    //fetch the website every one minute
-    const websites = await prisma.website.findMany({
-      where: {
-        deletedAt: null,
-      },
-      select: {
-        id: true,
-        url: true,
-      },
-    });
-  }
+import { xAddBulk } from "@repo/redisstore/client";
 
-  getWebsites();
-}, 60 * 1000);
+async function main() {
+  let websites = await prisma.website.findMany({
+    select: {
+      url: true,
+      id: true,
+    },
+  });
+
+  await xAddBulk(
+    websites.map((w) => ({
+      url: w.url,
+      id: w.id,
+    }))
+  );
+}
+
+setInterval(
+  () => {
+    main();
+  },
+  3 * 1000 * 60
+);
+
+main();
