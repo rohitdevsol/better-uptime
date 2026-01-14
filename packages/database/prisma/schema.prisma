@@ -55,22 +55,21 @@ model Website {
 }
 
 
-model WebsiteTick{
-  createdAt         DateTime  @default(now())
-  deletedAt         DateTime?
+model WebsiteTick {
+  createdAt   DateTime  @default(now())
+  deletedAt   DateTime?
 
-  id                String    @id @default(uuid())
-  websiteId         String
-  regionId          String
-  status            HealthStatus
-  ping              Int?
+  id          String    @id @default(uuid())
+  websiteId   String
+  regionId    String
+  status      HealthStatus
+  ping        Int?
 
-  website           Website   @relation(fields: [websiteId], references: [id])
-  region            Region    @relation(fields: [regionId],references: [id])
+  website     Website   @relation(fields: [websiteId], references: [id])
+  region      Region    @relation(fields: [regionId], references: [id])
 
-  @@unique([websiteId,regionId])
+  @@index([websiteId, regionId, createdAt])
 }
-
 
 model Region {
   createdAt         DateTime   @default(now())
