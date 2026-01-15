@@ -1,4 +1,4 @@
-import { prisma } from "@repo/database";
+import prisma from "@repo/database";
 import { ensureConsumerGroup } from "@repo/redisstore/client";
 
 async function bootstrapRegions() {

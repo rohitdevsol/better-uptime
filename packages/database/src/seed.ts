@@ -1,4 +1,4 @@
-import { prisma } from "./client";
+import prisma from "./client";
 
 import type { User } from "../generated/client";
 

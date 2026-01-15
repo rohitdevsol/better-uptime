@@ -1,4 +1,4 @@
-import { prisma, type WebsiteTick } from "@repo/database";
+import prisma, { type WebsiteTick } from "@repo/database";
 
 type CreateWebsiteInput = {
   url: string;
@@ -91,7 +91,6 @@ export async function getWebsiteTickHistory({
           some: {
             userId,
             deletedAt: null,
-            user: { deletedAt: null },
           },
         },
       },
