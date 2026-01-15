@@ -7,7 +7,6 @@ import {
   getWebsiteTickHistory,
 } from "@/services/website.service";
 import success from "@/responses/success";
-import { NotFoundError } from "@/responses/errors/NotFoundError";
 import { BadRequestError } from "@/responses/errors/BadRequestError";
 
 export async function createWebsiteController(req: Request, res: Response) {

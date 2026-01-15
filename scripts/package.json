@@ -1,19 +1,17 @@
 {
-  "name": "@repo/redisstore",
+  "name": "scripts",
   "module": "index.ts",
   "type": "module",
   "private": true,
-  "exports": {
-    "./client": "./index.ts"
+  "scripts": {
+    "bootstrap-regions": "bun run src/bootstrap-regions.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@repo/database": "*"
+    "@repo/database": "*",
+    "@repo/redisstore": "*"
   },
   "peerDependencies": {
     "typescript": "^5"
-  },
-  "dependencies": {
-    "redis": "^5.10.0"
   }
 }

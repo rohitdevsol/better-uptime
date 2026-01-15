@@ -17,11 +17,14 @@ async function main() {
   );
 }
 
-setInterval(
-  () => {
-    main();
-  },
-  3 * 1000 * 60
-);
+async function runLoop() {
+  try {
+    await main();
+  } catch (err) {
+    console.error("job failed", err);
+  } finally {
+    setTimeout(runLoop, 3 * 60 * 1000);
+  }
+}
 
-main();
+runLoop();

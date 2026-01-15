@@ -128,6 +128,7 @@
         "redis": "^5.10.0",
       },
       "devDependencies": {
+        "@repo/database": "*",
         "@types/bun": "latest",
       },
       "peerDependencies": {
@@ -139,6 +140,17 @@
       "dependencies": {
         "axios": "^1.13.2",
       },
+      "devDependencies": {
+        "@repo/database": "*",
+        "@repo/redisstore": "*",
+        "@types/bun": "latest",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
+      },
+    },
+    "scripts": {
+      "name": "scripts",
       "devDependencies": {
         "@repo/database": "*",
         "@repo/redisstore": "*",
@@ -1441,6 +1453,8 @@
     "safer-buffer": ["safer-buffer@2.1.2", "", {}, "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="],
 
     "scheduler": ["scheduler@0.23.2", "", { "dependencies": { "loose-envify": "^1.1.0" } }, "sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ=="],
+
+    "scripts": ["scripts@workspace:scripts"],
 
     "semver": ["semver@7.7.3", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q=="],
 

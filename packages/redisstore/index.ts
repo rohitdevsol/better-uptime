@@ -1,74 +1,84 @@
-import { createClient } from "redis";
-
-const STREAM_NAME = "betteruptime:website";
-
-const client = await createClient()
-  .on("error", (err) => {
-    console.log("Redis client error", err);
-    throw new Error("Redis client error");
-  })
-  .connect();
+import { createClient, type RedisClientType } from "redis";
 
 type WebsiteEvent = {
   url: string;
   id: string;
 };
 
-type MessageType = {
+export type StreamMessage = {
   id: string;
-  message: {
-    url: string;
-    id: string;
-  };
+  message: WebsiteEvent;
 };
 
-async function xAdd({ url, id }: WebsiteEvent) {
-  await client.xAdd(STREAM_NAME, "*", {
-    url,
-    id,
-  });
+const STREAM_NAME = "betteruptime:website";
+
+let client: RedisClientType | null = null;
+
+async function getRedis(): Promise<RedisClientType> {
+  if (client) return client;
+
+  client = createClient();
+  client.on("error", console.error);
+
+  await client.connect();
+  return client;
 }
 
-async function xAck(consumerGroup: string, stream_id: string) {
-  await client.xAck(STREAM_NAME, consumerGroup, stream_id);
+export async function ensureConsumerGroup(
+  consumerGroup: string
+): Promise<void> {
+  const redis = await getRedis();
+
+  try {
+    await redis.xGroupCreate(STREAM_NAME, consumerGroup, "0", {
+      MKSTREAM: true,
+    });
+  } catch (err: any) {
+    if (!err?.message?.includes("BUSYGROUP")) {
+      throw err;
+    }
+  }
 }
 
 export async function xReadGroup(
   consumerGroup: string,
-  workerId: string
-): Promise<MessageType[] | undefined> {
-  const res = await client.xReadGroup(
+  workerId: string,
+  count = 5,
+  blockMs = 5000
+): Promise<StreamMessage[]> {
+  const redis = await getRedis();
+
+  const res = await redis.xReadGroup(
     consumerGroup,
     workerId,
-    {
-      key: STREAM_NAME,
-      id: ">",
-    },
-    {
-      COUNT: 5,
-    }
+    { key: STREAM_NAME, id: ">" },
+    { COUNT: count }
   );
 
-  //@ts-ignore
-  let messages: MessageType[] | undefined = res?.[0]?.messages;
-
-  return messages;
+  //block time can be added above in 55 line
+  if (!res || res.length === 0) return [];
+  return res[0]?.messages as StreamMessage[];
 }
 
-// export async function xAck() {
-//   await client.xAck("betteruptime:website", "");
-// }
-export async function xAddBulk(websites: WebsiteEvent[]) {
-  websites.forEach(async (x) => {
-    await xAdd({
-      url: x.url,
-      id: x.id,
-    });
-  });
+export async function xAddBulk(events: WebsiteEvent[]): Promise<void> {
+  if (events.length === 0) return;
+
+  const redis = await getRedis();
+  const multi = redis.multi();
+
+  for (const event of events) {
+    multi.xAdd(STREAM_NAME, "*", event);
+  }
+
+  await multi.exec();
 }
 
-export async function xAckBulk(consumerGroup: string, eventsIds: string[]) {
-  eventsIds.forEach(async (x) => {
-    await xAck(consumerGroup, x);
-  });
+export async function xAckBulk(
+  consumerGroup: string,
+  messageIds: string[]
+): Promise<void> {
+  if (messageIds.length === 0) return;
+
+  const redis = await getRedis();
+  await redis.xAck(STREAM_NAME, consumerGroup, messageIds);
 }
