@@ -22,7 +22,7 @@ export default function Heading({
   return (
     <Tag
       className={cn(
-        "font-dm font-medium tracking-tight",
+        "font-poppins font-medium tracking-tighter",
         variants[variant],
         className,
       )}

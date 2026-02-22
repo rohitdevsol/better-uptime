@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { Button } from "../ui/button";
-import Container from "./container";
-import Heading from "./heading";
+import Container from "../sections/container";
+import Heading from "../sections/heading";
 import SubHeading from "./subheading";
 import { motion } from "motion/react"
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ export default function Hero() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return <section>
-        <Container className="flex flex-col gap-6 md:gap-8 py-20 md:py-32 lg:py-44">
+        <Container className="flex flex-col gap-6 md:gap-8 py-20 md:py-32 lg:py-44 relative">
 
             <p
                 className="text-center text-xs md:text-sm lg:text-base px-4 w-fit mx-auto bg-emerald-600 inline-block bg-clip-text text-transparent relative overflow-hidden border border-dashed rounded-md py-1"
@@ -76,7 +76,7 @@ export default function Hero() {
                             style={{
                                 zIndex: hoveredIndex === index ? 100 : avatarStack.length - index,
                             }}
-                            className={cn("w-12 h-12 relative rounded-md object-cover border border-transparent ring ring-black/10 hover:-translate-y-2 hover:scale-110 hover:border-2 hover:border-emerald-200 transition-all duration-300 ease-out",)} />
+                            className={cn("w-12 h-12 relative rounded-md object-cover border border-transparent ring ring-black/10 hover:-translate-y-2 hover:scale-110 hover:border-2 hover:border-neutral-300 transition-all duration-300 ease-out",)} />
                     ))}
                 </div>
             </div>
