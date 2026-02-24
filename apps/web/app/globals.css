@@ -153,6 +153,7 @@
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif); */
   --font-sans: var(--font-inter);
+  --font-landing: var(--font-poppins);
   --font-serif: var(--font-instrument-serif);
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,

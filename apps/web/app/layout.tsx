@@ -1,7 +1,7 @@
 import "./globals.css";
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Instrument_Serif, Poppins } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Providers } from "@/components/AuthUIProvider";
 
@@ -11,6 +11,14 @@ const inter = Inter({
   display: "swap",
   preload: true,
 });
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  preload: true,
+})
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -33,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} antialiased`}
+      className={`${inter.variable} ${instrumentSerif.variable} ${poppins.variable} antialiased`}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
