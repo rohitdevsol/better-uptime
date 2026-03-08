@@ -5,10 +5,12 @@ import Feature3 from "@/components/sections/feature3";
 import Features from "@/components/sections/features";
 import Footer from "@/components/sections/footer";
 import Hero from "@/components/sections/hero";
+import Navbar from "@/components/sections/navbar";
 import Pricing from "@/components/sections/pricing";
 
 export default function Page() {
-  return <section className="font-poppins">
+  return <section className="font-poppins bg-background relative">
+    <Navbar />
     <Hero />
     <Features />
     <Feature2 />
