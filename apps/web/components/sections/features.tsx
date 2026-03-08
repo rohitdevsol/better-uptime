@@ -44,7 +44,7 @@ export default function Features() {
 function FeatureCard({ title, description, children }: { title: string, description: string, children: React.ReactNode }) {
     return <div className="flex flex-col gap-4 h-120 rounded-2xl md:rounded-md group hover:shadow transition-all duration-300 ease-out">
 
-        <div className="flex-1 p-1 overflow-hidden rounded-xl md:rounded-md bg-gray-50 w-full group-hover:shadow transition-all duration-300 ease-out">
+        <div className="flex-1 p-1 overflow-hidden rounded-xl md:rounded-md bg-gray-50 dark:bg-neutral-700 w-full group-hover:shadow transition-all duration-300 ease-out">
             {children}
         </div>
 
@@ -80,20 +80,20 @@ function Card1() {
     ];
 
     return (
-        <div className="relative w-full h-full bg-white rounded-xl md:rounded-md border border-neutral-200/50 overflow-hidden group/monitoring shadow-sm flex flex-col min-h-[300px]">
+        <div className="relative w-full h-full bg-background rounded-md md:rounded-md border border-dashed overflow-hidden group/monitoring shadow-sm flex flex-col min-h-[300px] z-20">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[16px_16px] opacity-40"></div>
 
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl group-hover/monitoring:bg-emerald-500/20 transition-colors duration-700"></div>
 
-            <div className="relative flex items-center justify-between p-4 border-b border-neutral-100/80 bg-white/50 backdrop-blur-sm z-10">
+            <div className="relative flex items-center justify-between p-4 border-b rounded-t-sm border-neutral-100/80 dark:border-neutral-800/80 bg-foreground/10 backdrop-blur-sm z-10">
                 <div className="flex items-center gap-2.5">
                     <div className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </div>
-                    <span className="text-xs font-semibold text-neutral-700 tracking-tight">System Status</span>
+                    <span className="text-xs font-semibold text-muted-foreground tracking-tight">System Status</span>
                 </div>
-                <div className="flex items-center gap-1 bg-emerald-50/50 text-emerald-600 px-2 py-1 rounded-md border border-emerald-100/50 text-[10px] font-medium uppercase tracking-wider">
+                <div className="flex items-center gap-1 bg-background text-emerald-600 px-2 py-1 rounded-md border text-[10px] font-medium uppercase tracking-wider">
                     <Activity className="w-3 h-3" />
                     <span>Healthy</span>
                 </div>
@@ -104,11 +104,11 @@ function Card1() {
                 <div className="grid grid-cols-2 gap-3">
                     <motion.div
                         whileHover={{ scale: 1.02 }}
-                        className="bg-white border border-neutral-100 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] rounded-lg p-3 flex flex-col gap-1 relative overflow-hidden"
+                        className="bg-muted border shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] rounded-lg p-3 flex flex-col gap-1 relative overflow-hidden"
                     >
                         <span className="text-[10px] text-neutral-400 font-medium uppercase tracking-wider">Requests / s</span>
                         <div className="flex items-baseline gap-1">
-                            <span className="text-xl font-bold text-neutral-800">1,248</span>
+                            <span className="text-xl font-bold text-foreground">1,248</span>
                             <span className="text-[9px] text-emerald-500 font-medium">↑ 12%</span>
                         </div>
                         <svg className="w-full h-6 mt-1" viewBox="0 0 100 24" preserveAspectRatio="none">
@@ -128,7 +128,7 @@ function Card1() {
 
                     <motion.div
                         whileHover={{ scale: 1.02 }}
-                        className="bg-white border border-neutral-100 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] rounded-lg p-3 flex flex-col gap-1 relative overflow-hidden"
+                        className="bg-muted border shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] rounded-lg p-3 flex flex-col gap-1 relative overflow-hidden"
                     >
                         <span className="text-[10px] text-neutral-400 font-medium uppercase tracking-wider">Avg Latency</span>
                         <div className="flex items-baseline gap-1">
@@ -156,7 +156,7 @@ function Card1() {
                     </div>
                     <div className="flex items-end justify-between h-[72px] gap-1 opacity-80 group-hover/monitoring:opacity-100 transition-opacity duration-500">
                         {hardcodedBars.map((bar, i) => (
-                            <div key={i} className="relative w-full bg-neutral-100/80 rounded-t-sm h-full overflow-hidden">
+                            <div key={i} className="relative w-full bg-accent rounded-t-sm h-full overflow-hidden">
                                 <motion.div
                                     className="absolute bottom-0 left-0 w-full bg-linear-to-t from-emerald-600 to-emerald-400 rounded-t-sm"
                                     animate={{ height: bar.h }}
@@ -168,7 +168,7 @@ function Card1() {
                                     }}
                                 />
                                 <motion.div
-                                    className="absolute bottom-0 left-0 w-full bg-white/20 backdrop-blur-[1px] rounded-t-sm"
+                                    className="absolute bottom-0 left-0 w-full bg-foreground/10 backdrop-blur-[1px] rounded-t-sm"
                                     animate={{ height: bar.h }}
                                     transition={{
                                         duration: 3.5,
@@ -199,19 +199,19 @@ function Card2() {
     ];
 
     return (
-        <div className="relative w-full h-full bg-white rounded-xl md:rounded-md border border-neutral-200/50 overflow-hidden group/logging shadow-sm flex flex-col min-h-[300px]">
+        <div className="relative w-full h-full bg-background rounded-xl md:rounded-md border border-dashed overflow-hidden group/logging shadow-sm flex flex-col min-h-[300px]">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[16px_16px] opacity-40"></div>
 
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl group-hover/logging:bg-blue-500/20 transition-colors duration-700"></div>
 
 
-            <div className="relative flex items-center justify-between p-4 border-b border-neutral-100/80 bg-white/50 backdrop-blur-sm z-10">
+            <div className="relative flex items-center justify-between p-4 border-b rounded-t-sm border-neutral-100/80 dark:border-neutral-800/80 bg-foreground/10 backdrop-blur-sm z-10">
                 <div className="flex items-center gap-2.5">
                     <Database className="w-4 h-4 text-blue-500" />
-                    <span className="text-xs font-semibold text-neutral-700 tracking-tight">Log Stream</span>
+                    <span className="text-xs font-semibold text-muted-foreground tracking-tight">Log Stream</span>
                 </div>
 
-                <div className="flex bg-white border border-neutral-200 rounded-md px-2 py-1 items-center gap-2 w-32 shadow-xs group-hover/logging:border-blue-200 transition-colors">
+                <div className="flex bg-background border rounded-md px-2 py-1 items-center gap-2 w-32 shadow-xs">
                     <span className="text-[10px] text-neutral-400">Search "error"...</span>
                     <motion.div
                         animate={{ opacity: [1, 0, 1] }}
@@ -313,20 +313,20 @@ function Card3() {
     const timeline = [
         { user: "Sarah", text: "Investigating API latency...", time: "2m ago" },
         { user: "Alex", text: "Found a bottleneck in DB query.", time: "1m ago" },
-        { user: "Sarah", text: "Applying index optimization 🚀", time: "Just now" },
+        { user: "Sarah", text: "Applying index optimization", time: "Just now" },
     ];
 
     return (
-        <div className="relative w-full h-full bg-white rounded-xl md:rounded-md border border-neutral-200/50 overflow-hidden group/mentoring shadow-sm flex flex-col min-h-[300px]">
+        <div className="relative w-full h-full bg-background rounded-xl md:rounded-md border overflow-hidden group/mentoring shadow-sm flex flex-col min-h-[300px]">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[16px_16px] opacity-40"></div>
 
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl group-hover/mentoring:bg-purple-500/20 transition-colors duration-700"></div>
 
 
-            <div className="relative flex items-center justify-between p-4 border-b border-neutral-100/80 bg-white/50 backdrop-blur-sm z-10">
+            <div className="relative flex items-center justify-between p-4 border-b rounded-t-sm dark:border-neutral-800/80 bg-foreground/10 backdrop-blur-sm z-10">
                 <div className="flex items-center gap-2.5">
                     <Users className="w-4 h-4 text-purple-500" />
-                    <span className="text-xs font-semibold text-neutral-700 tracking-tight">Active Incident #842</span>
+                    <span className="text-xs font-semibold text-muted-foreground tracking-tight">Active Incident #842</span>
                 </div>
                 <div className="flex items-center -space-x-1 hover:space-x-1 transition-all">
                     <div className="relative w-5 h-5 rounded-full bg-purple-100 border border-white flex items-center justify-center text-[8px] font-bold text-purple-600 z-20">
@@ -342,9 +342,9 @@ function Card3() {
 
 
             <div className="relative flex-1 p-4 z-10 overflow-hidden">
-                <div className="w-full max-w-[85%] bg-white border border-neutral-100 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] rounded-lg p-3 mx-auto mt-4 group-hover/mentoring:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.1)] transition-shadow">
+                <div className="w-full max-w-[85%] bg-muted border shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] rounded-lg p-3 mx-auto mt-4 group-hover/mentoring:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.1)] transition-shadow">
                     <div className="flex justify-between items-center mb-3">
-                        <div className="h-2 w-1/3 bg-neutral-200 rounded-full"></div>
+                        <div className="h-2 w-1/3 bg-neutral-200 dark:bg-neutral-700 rounded-full"></div>
                         <div className="flex gap-1">
                             <div className="w-1.5 h-1.5 rounded-full bg-red-400"></div>
                             <div className="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
@@ -352,9 +352,9 @@ function Card3() {
                         </div>
                     </div>
                     <div className="space-y-2">
-                        <div className="h-1.5 w-full bg-neutral-100 rounded-full"></div>
-                        <div className="h-1.5 w-5/6 bg-neutral-100 rounded-full"></div>
-                        <div className="h-1.5 w-4/6 bg-neutral-100 rounded-full"></div>
+                        <div className="h-1.5 w-full bg-neutral-100 dark:bg-neutral-700 rounded-full"></div>
+                        <div className="h-1.5 w-5/6 bg-neutral-100 dark:bg-neutral-700 rounded-full"></div>
+                        <div className="h-1.5 w-4/6 bg-neutral-100 dark:bg-neutral-700 rounded-full"></div>
                     </div>
                 </div>
 
@@ -380,16 +380,16 @@ function Card3() {
                 ))}
             </div>
 
-            <div className="relative mt-auto p-4 border-t border-neutral-100/80 bg-neutral-50/50 backdrop-blur-sm z-10 flex flex-col justify-end">
+            <div className="relative mt-auto p-4 border-t bg-foreground/10 backdrop-blur-sm z-10 flex flex-col justify-end">
                 <div className="flex flex-col gap-2">
                     {timeline.map((event, i) => (
                         <div key={i} className="flex gap-2 text-[10px] items-start border-l-2 border-transparent hover:border-purple-200 pl-1 -ml-1 transition-colors">
                             <div className="flex flex-col gap-0.5 mt-0.5 flex-1 w-full relative">
                                 <div className="flex items-center gap-1">
-                                    <span className="font-semibold text-neutral-800">{event.user}</span>
-                                    <span className="text-neutral-400 shrink-0 text-[8px] ml-auto">{event.time}</span>
+                                    <span className="font-semibold text-foreground">{event.user}</span>
+                                    <span className="text-muted-foreground shrink-0 text-[8px] ml-auto">{event.time}</span>
                                 </div>
-                                <span className="text-neutral-600">{event.text}</span>
+                                <span className="text-muted-foreground">{event.text}</span>
                             </div>
                         </div>
                     ))}
