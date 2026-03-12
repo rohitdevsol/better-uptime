@@ -200,88 +200,183 @@ function Card1() {
                 </div>
             </div>
             <div className="flex-1 flex bg-grid-pattern relative z-10">
-                <div className="w-14 border-r border-border/50 flex flex-col py-3 bg-background/50 backdrop-blur-sm z-20">
-                    {["09:00", "10:00", "11:00", "12:00"].map((time, i) => (
-                        <div key={i} className="flex-1 flex justify-center text-[9px] text-muted-foreground font-medium pt-1 relative">
+                <div className="w-12 border-r border-border/50 flex flex-col py-3 bg-background/50 backdrop-blur-sm z-20">
+                    {["09:00", "10:00", "11:00", "12:00", "13:00"].map((time, i) => (
+                        <div key={i} className="flex-1 flex justify-center text-[8px] text-muted-foreground font-medium pt-1 relative">
                             {time}
                         </div>
                     ))}
                 </div>
-                <div className="flex-1 relative p-2 h-[200px] overflow-hidden">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ delay: 0.3, type: "spring" }}
-                        className="absolute top-2 left-2 right-2 h-14 bg-blue-500/10 border border-blue-500/20 rounded-md p-2 flex flex-col gap-1 shadow-sm overflow-hidden"
-                    >
-                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
-                        <div className="flex justify-between items-start ml-2">
-                            <span className="text-[10px] font-semibold text-blue-500">Engineering Sync</span>
-                            <span className="text-[8px] text-muted-foreground font-medium">09:00 - 10:00</span>
+                
+                <div className="flex-1 relative p-2 overflow-hidden flex">
+                    
+                    {/* Main Timeline Area */}
+                    <div className="flex-1 relative">
+                        {/* Horizontal grid lines */}
+                        <div className="absolute inset-0 pointer-events-none flex flex-col justify-between py-4">
+                            {[...Array(5)].map((_, i) => (
+                                <div key={i} className="w-full h-px border-t border-dashed border-border/30" />
+                            ))}
                         </div>
-                        <div className="flex items-center gap-1.5 ml-2 mt-auto">
-                            <Users className="w-2.5 h-2.5 text-blue-500/70" />
-                            <span className="text-[8px] text-blue-500/70">12 attendees</span>
-                        </div>
-                    </motion.div>
-                    <motion.div 
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ delay: 0.5, duration: 0.5, type: "spring", stiffness: 100 }}
-                        className="absolute top-16 left-2 right-12 h-[72px] bg-emerald-500/15 border-2 border-emerald-500/40 rounded-md p-2 flex flex-col gap-1 shadow-[0_4px_15px_-5px_rgba(16,185,129,0.2)] overflow-hidden z-10"
-                    >
-                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
-                        <div className="flex justify-between items-center ml-2">
-                            <span className="text-[10px] font-bold text-emerald-500">Product Review Q3</span>
-                            <div className="flex -space-x-1">
-                                <div className="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-500"></div>
-                                <div className="w-4 h-4 rounded-full bg-background border border-border"></div>
+
+                        {/* Current Time Indicator */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.8, duration: 0.5 }}
+                            className="absolute top-[85px] left-0 right-0 z-20 flex items-center pointer-events-none"
+                        >
+                            <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] -ml-0.5 relative z-10" />
+                            <div className="h-px flex-1 bg-red-500/50 shadow-[0_0_5px_rgba(239,68,68,0.5)]" />
+                        </motion.div>
+
+                        {/* Block 1 */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ delay: 0.3, type: "spring" }}
+                            className="absolute top-2 left-2 right-4 h-12 bg-blue-500/10 border border-blue-500/20 rounded-md p-2 flex flex-col shadow-sm overflow-hidden group/event cursor-pointer hover:bg-blue-500/20 transition-colors"
+                        >
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500 transition-all group-hover/event:w-1.5" />
+                            <div className="flex justify-between items-start ml-2">
+                                <span className="text-[9px] font-semibold text-blue-500">Engineering Sync</span>
+                                <span className="text-[7px] text-muted-foreground font-medium bg-background/50 px-1 rounded">09:00 - 09:45</span>
                             </div>
-                        </div>
-                        <div className="h-1.5 w-3/4 bg-emerald-500/30 rounded-full ml-2 mt-1"></div>
-                        <div className="h-1.5 w-1/2 bg-emerald-500/20 rounded-full ml-2"></div>
-                    </motion.div>
-                    <motion.div 
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ delay: 0.7, type: "spring" }}
-                        className="absolute top-[148px] left-6 right-2 h-12 bg-orange-500/10 border border-orange-500/20 rounded-md p-2 flex flex-col gap-1 shadow-sm overflow-hidden"
-                    >
-                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500"></div>
-                        <div className="flex justify-between items-start ml-2">
-                            <span className="text-[10px] font-semibold text-orange-500">Design Critique</span>
-                            <span className="text-[8px] text-muted-foreground font-medium">11:30 - 12:30</span>
-                        </div>
-                    </motion.div>
+                            <div className="flex items-center justify-between ml-2 mt-auto">
+                                <div className="flex items-center gap-1">
+                                    <Users className="w-2.5 h-2.5 text-blue-500/70" />
+                                    <span className="text-[7px] text-blue-500/70 font-medium">12 attendees</span>
+                                </div>
+                                <div className="flex -space-x-1 opacity-80 scale-90 origin-right">
+                                    <div className="w-3.5 h-3.5 rounded-full bg-blue-500/20 border border-blue-500/40" />
+                                    <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 border border-emerald-500/40" />
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Block 2 */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5, type: "spring", stiffness: 100 }}
+                            className="absolute top-16 left-2 right-8 h-16 bg-emerald-500/15 border border-emerald-500/30 rounded-md p-2 flex flex-col shadow-[0_4px_15px_-5px_rgba(16,185,129,0.2)] overflow-hidden z-10 group/event cursor-pointer hover:bg-emerald-500/25 transition-colors"
+                        >
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500 transition-all group-hover/event:w-1.5" />
+                            <div className="flex justify-between items-start ml-2">
+                                <div className="flex flex-col">
+                                    <span className="text-[10px] font-bold text-emerald-500">Product Review Q3</span>
+                                    <span className="text-[7px] text-emerald-600/70 font-medium mt-0.5">Core Metrics</span>
+                                </div>
+                                <div className="flex flex-col items-end gap-1">
+                                    <span className="text-[7px] text-emerald-600/70 font-medium bg-emerald-500/10 px-1 rounded border border-emerald-500/20">10:00 - 11:15</span>
+                                </div>
+                            </div>
+                            <div className="mt-auto ml-2 flex justify-between items-center">
+                                <div className="flex gap-1 items-center flex-1">
+                                    <div className="h-1 w-1/2 bg-emerald-500/40 rounded-full overflow-hidden">
+                                        <motion.div className="h-full bg-emerald-500" initial={{ width: "0%" }} animate={{ width: "80%" }} transition={{ delay: 1, duration: 1 }} />
+                                    </div>
+                                    <span className="text-[6px] text-emerald-600/70 font-bold uppercase">80% Ready</span>
+                                </div>
+                                <div className="flex -space-x-1 origin-right scale-75">
+                                    <div className="w-4 h-4 rounded-full bg-emerald-500/30 border border-emerald-500 flex items-center justify-center text-[6px] text-emerald-700 font-bold">+3</div>
+                                    <img src="https://i.pravatar.cc/100?img=4" className="w-4 h-4 rounded-full border border-emerald-500" alt="avatar" />
+                                    <img src="https://i.pravatar.cc/100?img=3" className="w-4 h-4 rounded-full border border-emerald-500" alt="avatar" />
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Block 3 */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ delay: 0.7, type: "spring" }}
+                            className="absolute top-[138px] left-6 right-2 h-10 bg-orange-500/10 border border-orange-500/20 rounded-md p-1.5 flex flex-col justify-between shadow-sm overflow-hidden group/event cursor-pointer hover:bg-orange-500/20 transition-colors"
+                        >
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500 transition-all group-hover/event:w-1.5" />
+                            <div className="flex justify-between items-center ml-2">
+                                <span className="text-[9px] font-semibold text-orange-500 flex items-center gap-1">
+                                    Design Critique
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+                                </span>
+                                <span className="text-[7px] text-muted-foreground font-medium bg-background/50 px-1 rounded">11:30 - 12:30</span>
+                            </div>
+                        </motion.div>
+
+                        {/* Block 4 (New) */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ delay: 0.9, type: "spring" }}
+                            className="absolute top-[185px] left-2 right-16 h-12 bg-purple-500/10 border border-purple-500/20 rounded-md p-1.5 flex flex-col justify-between shadow-sm overflow-hidden group/event cursor-pointer hover:bg-purple-500/20 transition-colors"
+                        >
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-purple-500 transition-all group-hover/event:w-1.5" />
+                            <div className="flex justify-between items-start ml-2">
+                                <span className="text-[9px] font-semibold text-purple-500">1:1 with Sarah</span>
+                                <span className="text-[7px] text-muted-foreground font-medium bg-background/50 px-1 rounded">13:00 - 13:45</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 ml-2">
+                                <img src="https://i.pravatar.cc/100?img=5" className="w-3.5 h-3.5 rounded-full border border-purple-500/50" alt="avatar" />
+                                <span className="text-[7px] text-purple-500/70 font-medium">In person</span>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Right Side 'Tasks' Column */}
+                    <div className="w-24 pl-2 border-l border-border/50 ml-2 hidden sm:flex flex-col gap-2 relative z-10">
+                        <span className="text-[8px] uppercase font-bold text-muted-foreground tracking-wider mb-1">Up Next</span>
+                        {[
+                            { title: "Review PR #412", time: "14:00", color: "blue" },
+                            { title: "Update Docs", time: "15:30", color: "emerald" },
+                            { title: "Client Call", time: "16:00", color: "orange" }
+                        ].map((task, i) => (
+                            <motion.div 
+                                key={i}
+                                initial={{ opacity: 0, x: 10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.8 + (i * 0.1) }}
+                                className={`bg-muted/30 border border-border/50 rounded flex flex-col p-1.5 border-l-2 border-l-${task.color}-500 group cursor-pointer hover:bg-background/80`}
+                            >
+                                <span className={`text-[8px] font-semibold text-${task.color}-500/80 group-hover:text-${task.color}-500 transition-colors`}>{task.title}</span>
+                                <span className="text-[7px] text-muted-foreground">{task.time}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+
                 </div>
             </div>
+            
+            {/* Background Glows */}
+            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
+            <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-emerald-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
+
+            {/* Floating Widget */}
             <motion.div
                 initial={{ opacity: 0, y: 20, x: 20 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{ delay: 1.2 }}
                 whileHover={{ y: -5, scale: 1.05 }}
-                className="absolute bottom-3 right-3 w-40 bg-background border border-border shadow-xl rounded-lg p-3 flex flex-col gap-2 z-30 transition-transform duration-300"
+                className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-36 sm:w-40 bg-background/90 backdrop-blur-md border border-border shadow-xl rounded-lg p-2.5 sm:p-3 flex flex-col gap-1.5 sm:gap-2 z-30 transition-transform duration-300"
             >
-                <div className="flex gap-2 items-center border-b border-border/50 pb-2">
-                    <div className="w-5 h-5 rounded flex items-center justify-center bg-emerald-500/10">
-                        <BarChart className="w-3 h-3 text-emerald-500" />
+                <div className="flex gap-2 items-center border-b border-border/50 pb-1.5">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded flex items-center justify-center bg-emerald-500/10">
+                        <BarChart className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-emerald-500" />
                     </div>
-                    <span className="text-[10px] font-medium text-foreground">Weekly Overview</span>
+                    <span className="text-[9px] sm:text-[10px] font-medium text-foreground">Weekly Overview</span>
                 </div>
                 
                 <div className="flex justify-between items-center px-1">
                     <div className="flex flex-col">
-                        <span className="text-[16px] font-bold text-emerald-500 tracking-tight">24h</span>
-                        <span className="text-[8px] text-muted-foreground">Meeting Time</span>
+                        <span className="text-[14px] sm:text-[16px] font-bold text-emerald-500 tracking-tight">24h</span>
+                        <span className="text-[7px] sm:text-[8px] text-muted-foreground">Meeting Time</span>
                     </div>
-                    <div className="h-8 w-px bg-border/50"></div>
+                    <div className="h-6 sm:h-8 w-px bg-border/50"></div>
                     <div className="flex flex-col items-end">
-                        <span className="text-[16px] font-bold text-foreground tracking-tight">8</span>
-                        <span className="text-[8px] text-muted-foreground">Events</span>
+                        <span className="text-[14px] sm:text-[16px] font-bold text-foreground tracking-tight">8</span>
+                        <span className="text-[7px] sm:text-[8px] text-muted-foreground">Events</span>
                     </div>
                 </div>
             </motion.div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/5 blur-3xl -z-10 rounded-full pointer-events-none" />
         </div>
     );
 }
