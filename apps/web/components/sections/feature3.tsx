@@ -112,11 +112,11 @@ export default function Feature3() {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
-                            <motion.div 
+                            <motion.div
                                 animate={{
                                     background: activeTab === 0 ? "radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(0,0,0,0) 70%)" :
-                                                activeTab === 1 ? "radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(0,0,0,0) 70%)" :
-                                                "radial-gradient(circle, rgba(249,115,22,0.1) 0%, rgba(0,0,0,0) 70%)"
+                                        activeTab === 1 ? "radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(0,0,0,0) 70%)" :
+                                            "radial-gradient(circle, rgba(249,115,22,0.1) 0%, rgba(0,0,0,0) 70%)"
                                 }}
                                 className="absolute inset-0 -z-10 transition-colors duration-700 ease-in-out"
                             />
@@ -130,34 +130,32 @@ export default function Feature3() {
 
 function FeatureCardDetail({ title, description, active, icon: Icon, onClick }: { title: string, description: string, active: boolean, icon: LucideIcon, onClick: () => void }) {
     return (
-        <div 
+        <div
             onClick={onClick}
-            className={`flex items-start gap-4 border border-dashed rounded-xl p-4 cursor-pointer transition-all duration-300 relative overflow-hidden group ${
-                active ? "bg-muted/60 border-primary/50 shadow-sm" : "hover:bg-muted/30 border-transparent hover:border-dashed hover:border-muted-foreground/30"
-            }`}
+            className={`flex items-start gap-4 border border-dashed rounded-xl p-4 cursor-pointer transition-all duration-300 relative overflow-hidden group ${active ? "bg-muted/60 border-primary/50 shadow-sm" : "hover:bg-muted/30 border-transparent hover:border-dashed hover:border-muted-foreground/30"
+                }`}
         >
             {active && (
-                <motion.div 
-                    layoutId="activeFeatureIndicator" 
-                    className="absolute inset-0 bg-primary/5 rounded-xl -z-10" 
+                <motion.div
+                    layoutId="activeFeatureIndicator"
+                    className="absolute inset-0 bg-primary/5 rounded-xl -z-10"
                 />
             )}
-            <div className={`flex items-center justify-center w-11 h-10 rounded-md border border-dashed mt-1 transition-colors duration-300 ${
-                active ? "bg-primary/10 border-primary/30 text-primary" : "bg-muted text-muted-foreground"
-            }`}>
+            <div className={`flex items-center justify-center w-11 h-10 rounded-md border border-dashed mt-1 transition-colors duration-300 ${active ? "bg-primary/10 border-primary/30 text-primary" : "bg-muted text-muted-foreground"
+                }`}>
                 <Icon className="w-5 h-5 shrink-0" />
             </div>
             <div className="flex flex-col gap-1">
-                <Heading 
-                    as="h2" 
-                    className={`${active ? "text-primary translate-x-1" : "text-foreground"} line-clamp-1 transition-all duration-300 ease-out group-hover:translate-x-1`} 
+                <Heading
+                    as="h2"
+                    className={`${active ? "text-primary translate-x-1" : "text-foreground"} line-clamp-1 transition-all duration-300 ease-out group-hover:translate-x-1`}
                     variant="small"
                 >
                     {title}
                 </Heading>
-                <SubHeading 
-                    as="p" 
-                    className={`${active ? "text-muted-foreground translate-x-1" : "text-muted-foreground/70"} line-clamp-3 transition-all duration-300 ease-out delay-100 group-hover:translate-x-1`} 
+                <SubHeading
+                    as="p"
+                    className={`${active ? "text-muted-foreground translate-x-1" : "text-muted-foreground/70"} line-clamp-3 transition-all duration-300 ease-out delay-100 group-hover:translate-x-1`}
                     variant="small"
                 >
                     {description}
@@ -183,7 +181,7 @@ function Card1() {
                 <div className="flex items-center gap-2">
                     <div className="flex -space-x-2 mr-2">
                         {[1, 2, 3].map((i) => (
-                            <motion.div 
+                            <motion.div
                                 key={i}
                                 initial={{ opacity: 0, scale: 0.5, x: 10 }}
                                 animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -207,20 +205,20 @@ function Card1() {
                         </div>
                     ))}
                 </div>
-                
+
                 <div className="flex-1 relative p-2 overflow-hidden flex">
-                    
-                    {/* Main Timeline Area */}
+
+
                     <div className="flex-1 relative">
-                        {/* Horizontal grid lines */}
+
                         <div className="absolute inset-0 pointer-events-none flex flex-col justify-between py-4">
                             {[...Array(5)].map((_, i) => (
                                 <div key={i} className="w-full h-px border-t border-dashed border-border/30" />
                             ))}
                         </div>
 
-                        {/* Current Time Indicator */}
-                        <motion.div 
+
+                        <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.8, duration: 0.5 }}
@@ -230,8 +228,8 @@ function Card1() {
                             <div className="h-px flex-1 bg-red-500/50 shadow-[0_0_5px_rgba(239,68,68,0.5)]" />
                         </motion.div>
 
-                        {/* Block 1 */}
-                        <motion.div 
+
+                        <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             transition={{ delay: 0.3, type: "spring" }}
@@ -254,8 +252,8 @@ function Card1() {
                             </div>
                         </motion.div>
 
-                        {/* Block 2 */}
-                        <motion.div 
+
+                        <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             transition={{ delay: 0.5, duration: 0.5, type: "spring", stiffness: 100 }}
@@ -286,8 +284,8 @@ function Card1() {
                             </div>
                         </motion.div>
 
-                        {/* Block 3 */}
-                        <motion.div 
+
+                        <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             transition={{ delay: 0.7, type: "spring" }}
@@ -303,8 +301,8 @@ function Card1() {
                             </div>
                         </motion.div>
 
-                        {/* Block 4 (New) */}
-                        <motion.div 
+
+                        <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             transition={{ delay: 0.9, type: "spring" }}
@@ -322,7 +320,7 @@ function Card1() {
                         </motion.div>
                     </div>
 
-                    {/* Right Side 'Tasks' Column */}
+
                     <div className="w-24 pl-2 border-l border-border/50 ml-2 hidden sm:flex flex-col gap-2 relative z-10">
                         <span className="text-[8px] uppercase font-bold text-muted-foreground tracking-wider mb-1">Up Next</span>
                         {[
@@ -330,7 +328,7 @@ function Card1() {
                             { title: "Update Docs", time: "15:30", color: "emerald" },
                             { title: "Client Call", time: "16:00", color: "orange" }
                         ].map((task, i) => (
-                            <motion.div 
+                            <motion.div
                                 key={i}
                                 initial={{ opacity: 0, x: 10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -345,12 +343,12 @@ function Card1() {
 
                 </div>
             </div>
-            
-            {/* Background Glows */}
+
+
             <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
             <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-emerald-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
 
-            {/* Floating Widget */}
+
             <motion.div
                 initial={{ opacity: 0, y: 20, x: 20 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
@@ -364,7 +362,7 @@ function Card1() {
                     </div>
                     <span className="text-[9px] sm:text-[10px] font-medium text-foreground">Weekly Overview</span>
                 </div>
-                
+
                 <div className="flex justify-between items-center px-1">
                     <div className="flex flex-col">
                         <span className="text-[14px] sm:text-[16px] font-bold text-emerald-500 tracking-tight">24h</span>
@@ -430,12 +428,12 @@ function Card2() {
 
 
             <div className="absolute left-8 sm:left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                <motion.div 
+                <motion.div
                     animate={{ rotate: 360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                     className="w-16 h-16 rounded-full border border-blue-500/30 flex items-center justify-center bg-background/50 backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.2)] relative"
                 >
 
-                    <motion.div 
+                    <motion.div
                         animate={{ rotate: -360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                         className="absolute inset-1 rounded-full border-t-2 border-l-2 border-emerald-400/80 opacity-60"
                     />
@@ -460,14 +458,14 @@ function Card2() {
 
                 <div className="grid grid-cols-2 gap-3 flex-1">
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
                         className="col-span-2 bg-muted/40 border border-border/50 rounded-lg p-3 relative overflow-hidden group/chart h-28"
                     >
                         <div className="flex justify-between items-center mb-1">
                             <span className="text-[9px] font-medium text-muted-foreground">Network Traffic</span>
                             <span className="text-[9px] text-emerald-500 font-bold flex items-center gap-0.5">
-                                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg> 
+                                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg>
                                 +124%
                             </span>
                         </div>
@@ -478,22 +476,22 @@ function Card2() {
                                 <line x1="0" y1="10" x2="100" y2="10" stroke="currentColor" strokeWidth="0.5" className="text-border/40" strokeDasharray="2 2" />
                                 <line x1="0" y1="20" x2="100" y2="20" stroke="currentColor" strokeWidth="0.5" className="text-border/40" strokeDasharray="2 2" />
                                 <line x1="0" y1="30" x2="100" y2="30" stroke="currentColor" strokeWidth="0.5" className="text-border/40" strokeDasharray="2 2" />
-                                
 
-                                <motion.path 
-                                    d="M0,40 L0,25 C15,15 25,35 40,25 C55,15 65,5 80,15 C90,20 95,25 100,5 L100,40 Z" 
-                                    fill="url(#card2Gradient)" 
+
+                                <motion.path
+                                    d="M0,40 L0,25 C15,15 25,35 40,25 C55,15 65,5 80,15 C90,20 95,25 100,5 L100,40 Z"
+                                    fill="url(#card2Gradient)"
                                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
                                 />
 
-                                <motion.path 
-                                    d="M0,25 C15,15 25,35 40,25 C55,15 65,5 80,15 C90,20 95,25 100,5" 
+                                <motion.path
+                                    d="M0,25 C15,15 25,35 40,25 C55,15 65,5 80,15 C90,20 95,25 100,5"
                                     fill="none" stroke="rgba(59,130,246,1)" strokeWidth="1.5"
                                     initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
                                 />
 
-                                <motion.path 
-                                    d="M0,30 C15,25 25,40 40,30 C55,20 65,15 80,25 C90,30 95,35 100,20" 
+                                <motion.path
+                                    d="M0,30 C15,25 25,40 40,30 C55,20 65,15 80,25 C90,30 95,35 100,20"
                                     fill="none" stroke="rgba(16,185,129,0.5)" strokeWidth="1" strokeDasharray="4 2"
                                     initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.7, ease: "easeInOut" }}
                                 />
@@ -508,14 +506,14 @@ function Card2() {
                     </motion.div>
 
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 }}
                         className="bg-muted/30 border border-border/50 rounded-lg p-2.5 flex flex-col justify-between relative overflow-hidden group/metric"
                     >
 
                         <div className="absolute -right-4 -top-4 w-16 h-16 bg-purple-500/10 blur-xl rounded-full transition-all duration-500 group-hover/metric:bg-purple-500/20 group-hover/metric:scale-150" />
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.05),transparent_50%)] pointer-events-none" />
-                        
+
                         <div className="relative z-10">
                             <span className="text-[9px] text-muted-foreground font-medium flex items-center gap-1">
                                 <div className="w-1.5 h-1.5 rounded-full bg-purple-500/50" />
@@ -531,14 +529,14 @@ function Card2() {
                     </motion.div>
 
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.6 }}
                         className="bg-muted/30 border border-border/50 rounded-lg p-2.5 flex flex-col justify-between relative overflow-hidden group/metric"
                     >
 
                         <div className="absolute -left-4 -bottom-4 w-16 h-16 bg-blue-500/10 blur-xl rounded-full transition-all duration-500 group-hover/metric:bg-blue-500/20 group-hover/metric:scale-150" />
                         <div className="absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-blue-500/5 to-transparent pointer-events-none" />
-                        
+
                         <div className="relative z-10">
                             <span className="text-[9px] text-muted-foreground font-medium flex items-center gap-1">
                                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50" />
@@ -550,25 +548,25 @@ function Card2() {
                         <div className="flex items-end gap-[2px] h-5 mt-2 opacity-90 relative z-10 w-full justify-between">
                             {[30, 45, 35, 60, 50, 80, 70, 95].map((h, i) => (
                                 <div key={i} className="w-[10%] bg-blue-500/20 rounded-t-[2px] h-full flex items-end overflow-hidden">
-                                    <motion.div initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ delay: 0.8 + i*0.05, duration: 0.5, type: "spring" }} className="w-full bg-blue-500 rounded-t-[2px] transition-all duration-300 hover:bg-blue-400" />
+                                    <motion.div initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ delay: 0.8 + i * 0.05, duration: 0.5, type: "spring" }} className="w-full bg-blue-500 rounded-t-[2px] transition-all duration-300 hover:bg-blue-400" />
                                 </div>
                             ))}
                         </div>
                     </motion.div>
 
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
                         className="col-span-2 bg-muted/30 border border-border/50 rounded-lg p-2.5 flex justify-between items-center relative overflow-hidden"
                     >
                         <div className="absolute inset-0 bg-linear-to-r from-emerald-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-                        
+
                         <div className="flex flex-col gap-1 relative z-10">
                             <span className="text-[9px] text-muted-foreground font-medium">Global Edge Nodes</span>
                             <div className="flex items-center gap-1.5">
                                 <span className="relative flex h-1.5 w-1.5">
-                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
                                 </span>
                                 <span className="text-[10px] font-bold text-foreground">Systems Operational</span>
                             </div>
@@ -580,11 +578,11 @@ function Card2() {
                                 { region: "EU-W", usage: 78, color: "blue" },
                                 { region: "AP-S", usage: 32, color: "purple" }
                             ].map((node, i) => (
-                                <motion.div 
-                                    key={i} 
-                                    initial={{ opacity: 0, scale: 0.8 }} 
-                                    animate={{ opacity: 1, scale: 1 }} 
-                                    transition={{ delay: 0.9 + i*0.1 }}
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.9 + i * 0.1 }}
                                     className="flex flex-col items-center gap-1 bg-background/50 border border-border/40 rounded p-1.5 min-w-[36px]"
                                 >
                                     <span className="text-[7px] text-muted-foreground font-bold">{node.region}</span>
@@ -592,16 +590,16 @@ function Card2() {
                                     <div className="relative w-4 h-4">
                                         <svg className="w-4 h-4 transform -rotate-90">
                                             <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="transparent" className="text-muted/50" />
-                                            <motion.circle 
-                                                cx="8" cy="8" r="6" 
-                                                stroke="currentColor" 
-                                                strokeWidth="1.5" 
-                                                fill="transparent" 
+                                            <motion.circle
+                                                cx="8" cy="8" r="6"
+                                                stroke="currentColor"
+                                                strokeWidth="1.5"
+                                                fill="transparent"
                                                 strokeDasharray="37.7"
                                                 initial={{ strokeDashoffset: 37.7 }}
                                                 animate={{ strokeDashoffset: 37.7 - (37.7 * node.usage) / 100 }}
-                                                transition={{ delay: 1.2 + i*0.2, duration: 1.5, ease: "easeOut" }}
-                                                className={`text-${node.color}-500`} 
+                                                transition={{ delay: 1.2 + i * 0.2, duration: 1.5, ease: "easeOut" }}
+                                                className={`text-${node.color}-500`}
                                             />
                                         </svg>
                                     </div>
@@ -611,7 +609,7 @@ function Card2() {
                     </motion.div>
                 </div>
             </div>
-            
+
 
             <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-blue-500/10 blur-3xl rounded-full z-0 pointer-events-none" />
             <div className="absolute -inset-2 bg-linear-to-bl from-blue-500/5 via-transparent to-purple-500/5 blur-2xl -z-10 rounded-full opacity-50" />
@@ -645,12 +643,12 @@ function Card3() {
                             { color: "blue", ring: "ring-blue-500" },
                             { color: "orange", ring: "ring-orange-500" },
                         ].map((user, i) => (
-                            <motion.div 
+                            <motion.div
                                 key={i}
                                 initial={{ opacity: 0, scale: 0.5, x: 10 }}
                                 animate={{ opacity: 1, scale: 1, x: 0 }}
                                 transition={{ delay: 0.1 * i, type: "spring" }}
-                                className={`w-6 h-6 rounded-full border border-background bg-${user.color}-500/20 z-${30-i} flex items-center justify-center relative ring-1 ${user.ring}`}
+                                className={`w-6 h-6 rounded-full border border-background bg-${user.color}-500/20 z-${30 - i} flex items-center justify-center relative ring-1 ${user.ring}`}
                             >
                                 <span className={`text-[9px] font-bold text-${user.color}-500`}>
                                     {['You', 'A', 'S'][i]}
@@ -660,18 +658,18 @@ function Card3() {
                     </div>
                 </div>
             </div>
-            <motion.div 
+            <motion.div
                 initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}
                 className="absolute left-2 top-16 bottom-2 w-8 bg-background/90 backdrop-blur-md border border-border rounded-lg shadow-sm flex flex-col items-center py-2 gap-3 z-30"
             >
                 <div className="w-5 h-5 rounded cursor-pointer flex items-center justify-center bg-primary/10 text-primary">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" /></svg>
                 </div>
                 <div className="w-5 h-5 rounded cursor-pointer flex items-center justify-center text-muted-foreground hover:bg-muted/50">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /></svg>
                 </div>
                 <div className="w-5 h-5 rounded cursor-pointer flex items-center justify-center text-muted-foreground hover:bg-muted/50">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /></svg>
                 </div>
                 <div className="w-5 h-5 rounded cursor-pointer flex items-center justify-center text-muted-foreground hover:bg-muted/50 mt-auto">
                     <MessageSquare className="w-3 h-3" />
@@ -679,106 +677,106 @@ function Card3() {
             </motion.div>
             <div className="flex-1 relative bg-grid-pattern bg-size-[12px_12px] bg-position-[calc(50%-1px)_calc(50%-1px)] overflow-hidden">
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                    <motion.path 
-                        d="M 120,60 C 150,60 160,110 190,110" 
+                    <motion.path
+                        d="M 120,60 C 150,60 160,110 190,110"
                         fill="none" stroke="rgba(59,130,246,0.3)" strokeWidth="1" strokeDasharray="4 4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.2 }}
                     />
-                    <motion.path 
-                        d="M 120,60 C 150,60 160,110 190,110" 
+                    <motion.path
+                        d="M 120,60 C 150,60 160,110 190,110"
                         fill="none" stroke="rgba(59,130,246,1)" strokeWidth="2"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: [0, 1, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                     />
-                    <motion.path 
-                        d="M 120,60 C 120,160 150,160 170,160" 
+                    <motion.path
+                        d="M 120,60 C 120,160 150,160 170,160"
                         fill="none" stroke="rgba(16,185,129,0.3)" strokeWidth="1" strokeDasharray="4 4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.3 }}
                     />
-                    <motion.path 
-                        d="M 120,60 C 120,160 150,160 170,160" 
+                    <motion.path
+                        d="M 120,60 C 120,160 150,160 170,160"
                         fill="none" stroke="rgba(16,185,129,1)" strokeWidth="2"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: [0, 1, 0] }}
                         transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 0.5 }}
                     />
-                    <motion.path 
-                        d="M 300,110 C 330,110 330,160 360,160" 
+                    <motion.path
+                        d="M 300,110 C 330,110 330,160 360,160"
                         fill="none" stroke="rgba(249,115,22,0.3)" strokeWidth="1" strokeDasharray="4 4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.4 }}
                     />
-                    <motion.path 
-                        d="M 300,110 C 330,110 330,160 360,160" 
+                    <motion.path
+                        d="M 300,110 C 330,110 330,160 360,160"
                         fill="none" stroke="rgba(249,115,22,1)" strokeWidth="2"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: [0, 1, 0] }}
                         transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: 1 }}
                     />
-                    <motion.path 
-                        d="M 280,160 C 310,160 320,160 360,160" 
+                    <motion.path
+                        d="M 280,160 C 310,160 320,160 360,160"
                         fill="none" stroke="rgba(168,85,247,0.3)" strokeWidth="1" strokeDasharray="4 4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.5 }}
                     />
-                    <motion.path 
-                        d="M 280,160 C 310,160 320,160 360,160" 
+                    <motion.path
+                        d="M 280,160 C 310,160 320,160 360,160"
                         fill="none" stroke="rgba(168,85,247,1)" strokeWidth="2"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: [0, 1, 0] }}
                         transition={{ duration: 2.2, repeat: Infinity, ease: "linear", delay: 1.5 }}
                     />
-                    <motion.path 
-                        d="M 120,60 C 80,120 70,180 80,240" 
+                    <motion.path
+                        d="M 120,60 C 80,120 70,180 80,240"
                         fill="none" stroke="rgba(236,72,153,0.3)" strokeWidth="1" strokeDasharray="4 4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.4 }}
                     />
-                    <motion.path 
-                        d="M 120,60 C 80,120 70,180 80,240" 
+                    <motion.path
+                        d="M 120,60 C 80,120 70,180 80,240"
                         fill="none" stroke="rgba(236,72,153,1)" strokeWidth="2"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: [0, 1, 0] }}
                         transition={{ duration: 2.3, repeat: Infinity, ease: "linear", delay: 0.8 }}
                     />
-                    <motion.path 
-                        d="M 170,160 C 170,220 190,240 200,270" 
+                    <motion.path
+                        d="M 170,160 C 170,220 190,240 200,270"
                         fill="none" stroke="rgba(14,165,233,0.3)" strokeWidth="1" strokeDasharray="4 4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.6 }}
                     />
-                    <motion.path 
-                        d="M 170,160 C 170,220 190,240 200,270" 
+                    <motion.path
+                        d="M 170,160 C 170,220 190,240 200,270"
                         fill="none" stroke="rgba(14,165,233,1)" strokeWidth="2"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: [0, 1, 0] }}
                         transition={{ duration: 2.1, repeat: Infinity, ease: "linear", delay: 0.3 }}
                     />
-                    <motion.path 
-                        d="M 360,160 C 370,200 360,220 340,250" 
+                    <motion.path
+                        d="M 360,160 C 370,200 360,220 340,250"
                         fill="none" stroke="rgba(234,179,8,0.3)" strokeWidth="1" strokeDasharray="4 4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.8 }}
                     />
-                    <motion.path 
-                        d="M 360,160 C 370,200 360,220 340,250" 
+                    <motion.path
+                        d="M 360,160 C 370,200 360,220 340,250"
                         fill="none" stroke="rgba(234,179,8,1)" strokeWidth="2"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: [0, 1, 0] }}
                         transition={{ duration: 1.9, repeat: Infinity, ease: "linear", delay: 1.2 }}
                     />
                 </svg>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 0.2 }}
@@ -794,7 +792,7 @@ function Card3() {
                     <div className="h-1.5 w-full bg-muted-foreground/20 rounded-full mb-1 mt-1.5"></div>
                     <div className="h-1.5 w-4/5 bg-muted-foreground/20 rounded-full"></div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 0.4 }}
@@ -812,7 +810,7 @@ function Card3() {
                         <div className="w-full bg-blue-500 rounded-t-sm h-full"></div>
                     </div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 0.6 }}
@@ -830,7 +828,7 @@ function Card3() {
                         <span className="text-[6px] px-1 bg-purple-500/10 text-purple-500 rounded border border-purple-500/20">Tech</span>
                     </div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 0.8 }}
@@ -838,21 +836,21 @@ function Card3() {
                 >
                     <div className="flex gap-1.5 items-center mb-1.5">
                         <div className="w-4 h-4 rounded bg-orange-500/20 flex items-center justify-center">
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-orange-500"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-orange-500"><path d="M22 2L11 13" /><path d="M22 2l-7 20-4-9-9-4 20-7z" /></svg>
                         </div>
                         <span className="text-[9px] font-bold text-orange-500">Launch Plan</span>
                     </div>
                     <div className="flex items-center gap-1">
                         <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-                            <motion.div 
-                                className="h-full bg-orange-500" 
+                            <motion.div
+                                className="h-full bg-orange-500"
                                 initial={{ width: "0%" }} animate={{ width: "75%" }} transition={{ duration: 1, delay: 1 }}
                             />
                         </div>
                         <span className="text-[7px] text-muted-foreground font-bold">75%</span>
                     </div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 0.7 }}
@@ -860,7 +858,7 @@ function Card3() {
                 >
                     <div className="flex gap-1.5 items-center mb-2">
                         <div className="w-4 h-4 rounded bg-pink-500/20 flex items-center justify-center">
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-pink-500"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-pink-500"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
                         </div>
                         <span className="text-[9px] font-semibold text-foreground">Content Assets</span>
                         <div className="ml-auto w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse"></div>
@@ -876,7 +874,7 @@ function Card3() {
                         </div>
                     </div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 0.9 }}
@@ -885,17 +883,17 @@ function Card3() {
                     <div className="text-[9px] font-semibold mb-1 w-full text-center text-foreground">Approvals</div>
                     <div className="flex justify-center gap-2 mt-2">
                         <div className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500">
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12" /></svg>
                         </div>
                         <div className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500">
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12" /></svg>
                         </div>
                         <div className="w-5 h-5 rounded-full bg-muted border border-border flex items-center justify-center text-muted-foreground">
                             <span className="text-[8px] font-bold">?</span>
                         </div>
                     </div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", delay: 1.1 }}
@@ -906,8 +904,8 @@ function Card3() {
                         <span className="text-[8px] font-mono text-muted-foreground">$12.5k</span>
                     </div>
                     <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden mt-1.5">
-                        <motion.div 
-                            className="h-full bg-yellow-500" 
+                        <motion.div
+                            className="h-full bg-yellow-500"
                             initial={{ width: "0%" }} animate={{ width: "45%" }} transition={{ duration: 1, delay: 1.2 }}
                         />
                     </div>
@@ -917,36 +915,36 @@ function Card3() {
                     </div>
                 </motion.div>
                 <motion.div
-                    animate={{ 
-                        x: [180, 150, 200, 180], 
+                    animate={{
+                        x: [180, 150, 200, 180],
                         y: [140, 130, 160, 140],
                     }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                     className="absolute top-0 left-0 z-40 flex flex-col items-start drop-shadow-md pointer-events-none"
                 >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="white" strokeWidth="2" className="text-orange-500">
-                        <path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 01.35-.15h6.42c.45 0 .67-.54.35-.85L6.35 3.35a.5.5 0 00-.85.35z"/>
+                        <path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 01.35-.15h6.42c.45 0 .67-.54.35-.85L6.35 3.35a.5.5 0 00-.85.35z" />
                     </svg>
                     <div className="bg-orange-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-sm rounded-tl-none ml-2 -mt-1 shadow-sm">
                         Sarah
                     </div>
                 </motion.div>
                 <motion.div
-                    animate={{ 
-                        x: [60, 100, 80, 60], 
+                    animate={{
+                        x: [60, 100, 80, 60],
                         y: [60, 50, 80, 60],
                     }}
                     transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                     className="absolute top-0 left-0 z-40 flex flex-col items-start drop-shadow-md pointer-events-none"
                 >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="white" strokeWidth="2" className="text-emerald-500">
-                        <path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 01.35-.15h6.42c.45 0 .67-.54.35-.85L6.35 3.35a.5.5 0 00-.85.35z"/>
+                        <path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 01.35-.15h6.42c.45 0 .67-.54.35-.85L6.35 3.35a.5.5 0 00-.85.35z" />
                     </svg>
                     <div className="bg-emerald-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-sm rounded-tl-none ml-2 -mt-1 shadow-md">
                         You
                     </div>
                 </motion.div>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1, 1, 0.8], y: [10, 0, 0, -10] }}
                     transition={{ duration: 4, repeat: Infinity, repeatDelay: 2 }}
