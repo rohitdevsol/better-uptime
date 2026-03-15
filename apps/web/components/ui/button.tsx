@@ -9,7 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-linear-to-br from-emerald-600 via-emerald-500 to-emerald-600 text-white border border-emerald-600 text-sm md:text-base font-medium shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.8),inset_0_4px_4px_rgba(255,255,255,0.20),0_4px_4px_-3px_var(--color-neutral-50),0_2px_4px_rgba(1,1,1,0.20)]",
+        default: "bg-linear-to-br from-neutral-800 via-neutral-700 to-neutral-800 dark:bg-linear-to-br dark:from-neutral-100 dark:via-neutral-50 dark:to-neutral-100 text-white dark:text-black border border-neutral-900 text-sm md:text-base font-medium shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.8),inset_0_4px_4px_rgba(255,255,255,0.20),0_4px_4px_-3px_var(--color-neutral-900),0_2px_4px_rgba(1,1,1,0.20)",
+
+        primary: "bg-linear-to-br from-emerald-600 via-emerald-500 to-emerald-600 text-white border border-emerald-600 text-sm md:text-base font-medium shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.8),inset_0_4px_4px_rgba(255,255,255,0.20),0_4px_4px_-3px_var(--color-emerald-500),0_2px_4px_rgba(1,1,1,0.20)]",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:

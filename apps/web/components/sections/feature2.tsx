@@ -112,22 +112,22 @@ function Card1() {
                 <motion.div
                     animate={{ scale: pulse ? 1.05 : 1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative z-10 w-12 h-12 bg-muted border border-border/50 rounded-full flex items-center justify-center shadow-md group/pulse"
+                    className="relative z-10 w-12 h-12 bg-white dark:bg-muted border rounded-full flex items-center justify-center shadow-md group/pulse"
                 >
                     <Bell className={`w-5 h-5 transition-colors ${pulse ? 'text-indigo-500' : 'text-muted-foreground group-hover/pulse:text-indigo-400'}`} />
                     <div className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white" />
                 </motion.div>
                 {pulse && (
                     <motion.div
-                        initial={{ scale: 1, opacity: 0.5 }}
+                        initial={{ scale: 1, opacity: 0.2 }}
                         animate={{ scale: 3.5, opacity: 0 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
-                        className="absolute inset-0 rounded-full bg-indigo-500 pointer-events-none"
+                        className="absolute inset-0 rounded-full bg-indigo-500 pointer-events-none opacity-20"
                     />
                 )}
             </div>
 
-            <div className="grid grid-cols-2 gap-4 z-10 w-full px-2 mt-auto pb-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 z-10 w-full px-2 mt-auto pb-2">
                 {slots.map((alertIdx, slotIndex) => {
                     const alert = allAlerts[alertIdx];
                     const Icon = alert.icon;

@@ -93,7 +93,7 @@ export default function Pricing() {
                 </div>
 
 
-                <div className="flex flex-col md:flex-row justify-center gap-4 lg:gap-8">
+                <div className="flex flex-col lg:flex-row justify-center divide-y lg:divide-y-0 lg:divide-x border-y">
                     {PRICING_PLANS.map((plan, index) => (
                         <PricingCard key={index} plan={plan} />
                     ))}

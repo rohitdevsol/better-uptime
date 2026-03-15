@@ -165,7 +165,7 @@ function Card1() {
                     <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
                         <Calendar className="w-4 h-4 text-emerald-500" />
                     </div>
-                    <div>
+                    <div className="hidden md:block">
                         <div className="text-xs font-semibold text-foreground">Team Schedule</div>
                         <div className="text-[10px] text-muted-foreground">March 2026</div>
                     </div>
@@ -184,7 +184,7 @@ function Card1() {
                             </motion.div>
                         ))}
                     </div>
-                    <div className="h-6 px-2 rounded-md bg-emerald-500 text-white text-[10px] font-medium flex items-center justify-center shadow-sm">
+                    <div className="h-6 px-2 rounded-md bg-emerald-500 text-white text-[10px] font-medium flex items-center justify-center shadow-sm whitespace-nowrap">
                         + New Event
                     </div>
                 </div>
@@ -336,17 +336,12 @@ function Card1() {
                 </div>
             </div>
 
-
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-emerald-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
-
-
             <motion.div
                 initial={{ opacity: 0, y: 20, x: 20 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{ delay: 1.2 }}
                 whileHover={{ y: -5, scale: 1.05 }}
-                className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-36 sm:w-40 bg-background/90 backdrop-blur-md border border-border shadow-xl rounded-lg p-2.5 sm:p-3 flex flex-col gap-1.5 sm:gap-2 z-30 transition-transform duration-300"
+                className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-36 sm:w-40 bg-background/90 backdrop-blur-md border border-border shadow-xl rounded-lg p-2.5 sm:p-3 hidden md:flex flex-col gap-1.5 sm:gap-2 z-30 transition-transform duration-300"
             >
                 <div className="flex gap-2 items-center border-b border-border/50 pb-1.5">
                     <div className="w-4 h-4 sm:w-5 sm:h-5 rounded flex items-center justify-center bg-emerald-500/10">
@@ -619,7 +614,7 @@ function Card3() {
                         <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                         <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
                     </div>
-                    <div className="h-6 px-2 bg-background border border-border rounded flex items-center gap-2">
+                    <div className="h-6 px-2 bg-background border border-border rounded hidden md:flex items-center gap-2">
                         <Users className="w-3 h-3 text-muted-foreground" />
                         <span className="text-[10px] font-medium text-foreground">Marketing Campaign.board</span>
                     </div>
