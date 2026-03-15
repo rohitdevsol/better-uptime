@@ -2,8 +2,8 @@ import "./globals.css";
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif, Poppins } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import { Providers } from "@/components/AuthUIProvider";
+import ThemeProvider from "@/providers/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],

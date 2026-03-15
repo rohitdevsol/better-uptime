@@ -33,7 +33,7 @@ export default function Hero() {
         <Container className="flex flex-col gap-6 md:gap-8 py-20 md:py-32 lg:py-44 relative">
 
             <p
-                className="text-center text-xs md:text-sm lg:text-base px-4 w-fit mx-auto bg-emerald-600 inline-block bg-clip-text text-transparent relative overflow-hidden border border-dashed rounded-md py-1"
+                className="text-center text-xs md:text-sm lg:text-base px-4 w-fit mx-auto text-emerald-500 dark:text-emerald-600 relative overflow-hidden border dark:border-neutral-700 border-neutral-300 border-dashed rounded-md py-1 bg-white dark:bg-black"
             >
                 For teams that never sleep.
             </p>
@@ -51,7 +51,7 @@ export default function Hero() {
             </SubHeading>
 
             <div className="flex items-center gap-4 justify-center">
-                <Button>
+                <Button variant={"primary"}>
                     Start monitoring
                 </Button>
                 <Button variant={"outline"} className="px-8 bg-background">

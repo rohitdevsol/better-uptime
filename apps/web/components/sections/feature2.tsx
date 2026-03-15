@@ -98,7 +98,6 @@ function Card1() {
 
     return (
         <div className="flex flex-col items-center p-4 relative w-full h-full overflow-hidden group/card1 gap-6">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(120,119,198,0.08),rgba(255,255,255,0))]" />
 
             <motion.div
                 animate={{ rotate: 360 }}
@@ -113,29 +112,29 @@ function Card1() {
                 <motion.div
                     animate={{ scale: pulse ? 1.05 : 1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative z-10 w-12 h-12 bg-muted border border-border/50 rounded-full flex items-center justify-center shadow-md group/pulse"
+                    className="relative z-10 w-12 h-12 bg-white dark:bg-muted border rounded-full flex items-center justify-center shadow-md group/pulse"
                 >
                     <Bell className={`w-5 h-5 transition-colors ${pulse ? 'text-indigo-500' : 'text-muted-foreground group-hover/pulse:text-indigo-400'}`} />
                     <div className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white" />
                 </motion.div>
                 {pulse && (
                     <motion.div
-                        initial={{ scale: 1, opacity: 0.5 }}
+                        initial={{ scale: 1, opacity: 0.2 }}
                         animate={{ scale: 3.5, opacity: 0 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
-                        className="absolute inset-0 rounded-full bg-indigo-500 pointer-events-none"
+                        className="absolute inset-0 rounded-full bg-indigo-500 pointer-events-none opacity-20"
                     />
                 )}
             </div>
 
-            <div className="grid grid-cols-2 gap-4 z-10 w-full px-2 mt-auto pb-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 z-10 w-full px-2 mt-auto pb-2">
                 {slots.map((alertIdx, slotIndex) => {
                     const alert = allAlerts[alertIdx];
                     const Icon = alert.icon;
                     return (
                         <div
                             key={`slot-${slotIndex}`}
-                            className={`flex flex-col p-3 rounded-2xl border ${alert.border} bg-muted shadow-sm hover:shadow-md transition-shadow duration-300 relative overflow-hidden group/notif h-full justify-center`}
+                            className={`flex flex-col p-3 rounded-2xl border ${alert.border} bg-white dark:bg-muted shadow-sm hover:shadow-md transition-shadow duration-300 relative overflow-hidden group/notif h-full justify-center`}
                         >
                             <AnimatePresence mode="popLayout" initial={false}>
                                 <motion.div
@@ -245,8 +244,6 @@ function Card2() {
 
     return (
         <div className="flex flex-col items-center justify-center p-4 relative w-full h-full overflow-hidden group/card2">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[16px_16px] opacity-50" />
-            <div className="absolute right-0 top-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl" />
 
             <div className="w-full h-full rounded-xl border border-border bg-background shadow-md overflow-hidden flex flex-col relative z-10">
 
@@ -296,9 +293,7 @@ function Card2() {
                     </div>
                 </div>
 
-                <div className="flex-1 p-2 overflow-hidden flex flex-col justify-end bg-[#0A0A0A] dark:bg-black font-mono relative">
-
-                    <div className="absolute inset-0 bg-linear-to-t from-transparent to-[#0A0A0A] opacity-20 pointer-events-none z-10" />
+                <div className="flex-1 p-4 overflow-hidden flex flex-col justify-end bg-background font-mono relative">
 
                     <div className="flex flex-col gap-1.5 justify-end w-full">
                         <AnimatePresence initial={false}>
@@ -347,7 +342,7 @@ function Card2() {
                 transition={{ delay: 1 }}
             >
                 <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-                <span className="text-xs font-semibold text-foreground">32M events/day</span>
+                <span className="text-xs font-medium text-foreground">32M events/day</span>
             </motion.div>
         </div>
     );
@@ -365,8 +360,6 @@ function Card3() {
 
     return (
         <div className="flex flex-col items-center justify-center p-4 relative w-full h-full overflow-hidden group/card3">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.08),transparent_70%)] opacity-50 block dark:hidden" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.08),transparent_70%)] opacity-50 hidden dark:block" />
 
             <div className="relative w-64 h-64 flex items-center justify-center -mt-6">
 
@@ -570,7 +563,7 @@ function Card4() {
                         return (
                             <motion.div
                                 key={originalIndex}
-                                className="absolute inset-0 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl flex flex-col items-start justify-between p-4"
+                                className="absolute inset-0 bg-background border rounded-xl shadow flex flex-col items-start justify-between p-4"
                                 animate={{
                                     y: animY,
                                     x: animX,

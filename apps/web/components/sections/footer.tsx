@@ -39,8 +39,8 @@ const FOOTER_LINKS = [PRODUCT_LINKS, COMPANY_LINKS, RESOURCE_LINKS];
 
 export default function Footer() {
     return (
-        <footer>
-            <Container>
+        <footer className="border-t">
+            <Container className="border-x">
                 <div className="flex flex-col lg:flex-row justify-between gap-12 py-16">
 
                     {/* Left Section */}
@@ -66,7 +66,7 @@ export default function Footer() {
 
                                 <ul className="flex flex-col gap-2 mt-4">
                                     {section.data.map((item) => (
-                                        <li key={item} className="text-neutral-800">
+                                        <li key={item} className="dark:text-neutral-600 text-neutral-400">
                                             <a href="#">{item}</a>
                                         </li>
                                     ))}

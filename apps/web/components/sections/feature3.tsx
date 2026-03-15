@@ -112,14 +112,6 @@ export default function Feature3() {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
-                            <motion.div
-                                animate={{
-                                    background: activeTab === 0 ? "radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(0,0,0,0) 70%)" :
-                                        activeTab === 1 ? "radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(0,0,0,0) 70%)" :
-                                            "radial-gradient(circle, rgba(249,115,22,0.1) 0%, rgba(0,0,0,0) 70%)"
-                                }}
-                                className="absolute inset-0 -z-10 transition-colors duration-700 ease-in-out"
-                            />
                         </div>
                     </div>
                 </div>
@@ -167,13 +159,13 @@ function FeatureCardDetail({ title, description, active, icon: Icon, onClick }: 
 
 function Card1() {
     return (
-        <div className="relative w-full h-full bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl p-0 flex flex-col overflow-hidden group">
+        <div className="relative w-full h-full bg-background border border-border/50 rounded-2xl p-1 flex flex-col group">
             <div className="flex justify-between items-center p-4 border-b border-border/50 bg-muted/20 relative z-20">
                 <div className="flex items-center gap-3">
                     <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
                         <Calendar className="w-4 h-4 text-emerald-500" />
                     </div>
-                    <div>
+                    <div className="hidden md:block">
                         <div className="text-xs font-semibold text-foreground">Team Schedule</div>
                         <div className="text-[10px] text-muted-foreground">March 2026</div>
                     </div>
@@ -192,7 +184,7 @@ function Card1() {
                             </motion.div>
                         ))}
                     </div>
-                    <div className="h-6 px-2 rounded-md bg-emerald-500 text-white text-[10px] font-medium flex items-center justify-center shadow-sm">
+                    <div className="h-6 px-2 rounded-md bg-emerald-500 text-white text-[10px] font-medium flex items-center justify-center shadow-sm whitespace-nowrap">
                         + New Event
                     </div>
                 </div>
@@ -344,17 +336,12 @@ function Card1() {
                 </div>
             </div>
 
-
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-emerald-500/10 blur-3xl -z-10 rounded-full pointer-events-none" />
-
-
             <motion.div
                 initial={{ opacity: 0, y: 20, x: 20 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{ delay: 1.2 }}
                 whileHover={{ y: -5, scale: 1.05 }}
-                className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-36 sm:w-40 bg-background/90 backdrop-blur-md border border-border shadow-xl rounded-lg p-2.5 sm:p-3 flex flex-col gap-1.5 sm:gap-2 z-30 transition-transform duration-300"
+                className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-36 sm:w-40 bg-background/90 backdrop-blur-md border border-border shadow-xl rounded-lg p-2.5 sm:p-3 hidden md:flex flex-col gap-1.5 sm:gap-2 z-30 transition-transform duration-300"
             >
                 <div className="flex gap-2 items-center border-b border-border/50 pb-1.5">
                     <div className="w-4 h-4 sm:w-5 sm:h-5 rounded flex items-center justify-center bg-emerald-500/10">
@@ -381,7 +368,7 @@ function Card1() {
 
 function Card2() {
     return (
-        <div className="relative w-full h-full bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl overflow-hidden flex">
+        <div className="relative w-full h-full bg-background border border-border/50 rounded-2xl flex p-1">
 
             <div className="w-1/3 border-r border-border/50 bg-muted/20 p-3 flex-col gap-2 relative overflow-hidden z-10 hidden sm:flex">
                 <div className="text-[10px] uppercase font-bold text-muted-foreground mb-1 tracking-widest flex items-center gap-1">
@@ -430,7 +417,7 @@ function Card2() {
             <div className="absolute left-8 sm:left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                 <motion.div
                     animate={{ rotate: 360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    className="w-16 h-16 rounded-full border border-blue-500/30 flex items-center justify-center bg-background/50 backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.2)] relative"
+                    className="w-16 h-16 rounded-full border border-blue-500/30 flex items-center justify-center bg-background relative"
                 >
 
                     <motion.div
@@ -619,7 +606,7 @@ function Card2() {
 
 function Card3() {
     return (
-        <div className="relative w-full h-full bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl p-0 flex flex-col overflow-hidden group">
+        <div className="relative w-full h-full bg-background border border-border/50 rounded-2xl p-1 flex flex-col group">
             <div className="flex justify-between items-center p-3 border-b border-border/50 bg-muted/30 relative z-30 backdrop-blur-md">
                 <div className="flex items-center gap-3">
                     <div className="flex -space-x-1">
@@ -627,7 +614,7 @@ function Card3() {
                         <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                         <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
                     </div>
-                    <div className="h-6 px-2 bg-background border border-border rounded flex items-center gap-2">
+                    <div className="h-6 px-2 bg-background border border-border rounded hidden md:flex items-center gap-2">
                         <Users className="w-3 h-3 text-muted-foreground" />
                         <span className="text-[10px] font-medium text-foreground">Marketing Campaign.board</span>
                     </div>
