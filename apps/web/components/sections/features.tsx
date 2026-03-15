@@ -81,9 +81,6 @@ function Card1() {
 
     return (
         <div className="relative w-full h-full bg-background rounded-md md:rounded-md border border-dashed overflow-hidden group/monitoring shadow-sm flex flex-col min-h-[300px] z-20">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[16px_16px] opacity-40"></div>
-
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl group-hover/monitoring:bg-emerald-500/20 transition-colors duration-700"></div>
 
             <div className="relative flex items-center justify-between p-4 border-b rounded-t-sm border-neutral-100/80 dark:border-neutral-800/80 bg-foreground/10 backdrop-blur-sm z-10">
                 <div className="flex items-center gap-2.5">
@@ -200,10 +197,6 @@ function Card2() {
 
     return (
         <div className="relative w-full h-full bg-background rounded-xl md:rounded-md border border-dashed overflow-hidden group/logging shadow-sm flex flex-col min-h-[300px]">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[16px_16px] opacity-40"></div>
-
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl group-hover/logging:bg-blue-500/20 transition-colors duration-700"></div>
-
 
             <div className="relative flex items-center justify-between p-4 border-b rounded-t-sm border-neutral-100/80 dark:border-neutral-800/80 bg-foreground/10 backdrop-blur-sm z-10">
                 <div className="flex items-center gap-2.5">
@@ -222,7 +215,7 @@ function Card2() {
             </div>
 
 
-            <div className="relative flex-1 p-3 flex flex-col gap-2 z-10 m-4 bg-neutral-950 rounded-lg border border-neutral-800 shadow-[0_8px_16px_-6px_rgba(0,0,0,0.4)] font-mono text-[10px] overflow-hidden">
+            <div className="relative flex-1 p-3 flex flex-col gap-2 z-10 m-4 bg-neutral-100 dark:bg-neutral-950 rounded-lg border border-neutral-300 dark:border-neutral-800 shadow font-mono text-[10px] overflow-hidden">
 
                 <div className="flex gap-1.5 mb-1 ml-1 z-20 relative">
                     <div className="w-2 h-2 rounded-full bg-red-500/40 group-hover/logging:bg-red-500 transition-colors duration-300"></div>
@@ -230,7 +223,7 @@ function Card2() {
                     <div className="w-2 h-2 rounded-full bg-green-500/40 group-hover/logging:bg-green-500 transition-colors duration-300 delay-150"></div>
                 </div>
 
-                <div className="flex flex-col gap-1.5 relative h-full flex-1 overflow-hidden">
+                <div className="flex flex-col gap-1.5 relative h-full flex-1 overflow-hidden bg-background mask-t-from-80% mask-b-from-80%">
 
                     <motion.div
                         className="flex flex-col gap-2 relative mt-2 shrink-0"
@@ -244,31 +237,28 @@ function Card2() {
                         {[...logs, ...logs].map((log, i) => (
                             <div
                                 key={i}
-                                className={`flex items-start gap-2 relative ${log.highlight ? 'bg-blue-500/10 -mx-3 px-3 py-0.5 border-l-2 border-blue-500/50' : 'px-0 border-l-2 border-transparent'} group-hover/logging:opacity-100 opacity-80 transition-opacity`}
+                                className={`flex items-start gap-2 relative ${log.highlight ? 'bg-blue-500/10 -mx-3 px-3 py-0.5 border-l-2 border-blue-500' : 'px-0 border-l-2 border-transparent'} group-hover/logging:opacity-100 opacity-80 transition-opacity`}
                             >
                                 <span className="text-neutral-500 shrink-0">{log.time}</span>
-                                <span className={`shrink-0 ${log.type === 'info' ? 'text-blue-400' :
-                                    log.type === 'warn' ? 'text-amber-400' :
+                                <span className={`shrink-0 ${log.type === 'info' ? 'text-blue-600 dark:text-blue-400' :
+                                    log.type === 'warn' ? 'dark:text-amber-400 text-amber-600' :
                                         'text-red-400'
                                     }`}>
                                     [{log.type.toUpperCase()}]
                                 </span>
                                 <span className={`${log.type === 'error' ? 'text-red-300' :
-                                    log.type === 'warn' ? 'text-amber-200' : 'text-neutral-300'
+                                    log.type === 'warn' ? 'text-amber-200' : 'dark:text-neutral-300 text-neutral-600'
                                     }`}>
                                     {log.text}
                                 </span>
                             </div>
                         ))}
                     </motion.div>
-
-
-                    <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_bottom,#0a0a0a_0%,transparent_15%,transparent_85%,#0a0a0a_100%)] z-10"></div>
                 </div>
             </div>
 
 
-            <div className="absolute bottom-4 right-4 flex gap-1 z-10">
+            <div className="absolute bottom-6 right-6 flex gap-1 z-10">
                 {[...Array(5)].map((_, i) => (
                     <motion.div
                         key={i}
@@ -318,11 +308,7 @@ function Card3() {
 
     return (
         <div className="relative w-full h-full bg-background rounded-xl md:rounded-md border overflow-hidden group/mentoring shadow-sm flex flex-col min-h-[300px]">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[16px_16px] opacity-40"></div>
-
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl group-hover/mentoring:bg-purple-500/20 transition-colors duration-700"></div>
-
-
+           
             <div className="relative flex items-center justify-between p-4 border-b rounded-t-sm dark:border-neutral-800/80 bg-foreground/10 backdrop-blur-sm z-10">
                 <div className="flex items-center gap-2.5">
                     <Users className="w-4 h-4 text-purple-500" />
