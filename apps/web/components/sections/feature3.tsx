@@ -112,14 +112,6 @@ export default function Feature3() {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
-                            <motion.div
-                                animate={{
-                                    background: activeTab === 0 ? "radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(0,0,0,0) 70%)" :
-                                        activeTab === 1 ? "radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(0,0,0,0) 70%)" :
-                                            "radial-gradient(circle, rgba(249,115,22,0.1) 0%, rgba(0,0,0,0) 70%)"
-                                }}
-                                className="absolute inset-0 -z-10 transition-colors duration-700 ease-in-out"
-                            />
                         </div>
                     </div>
                 </div>
@@ -167,7 +159,7 @@ function FeatureCardDetail({ title, description, active, icon: Icon, onClick }: 
 
 function Card1() {
     return (
-        <div className="relative w-full h-full bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl p-0 flex flex-col overflow-hidden group">
+        <div className="relative w-full h-full bg-background border border-border/50 rounded-2xl p-1 flex flex-col group">
             <div className="flex justify-between items-center p-4 border-b border-border/50 bg-muted/20 relative z-20">
                 <div className="flex items-center gap-3">
                     <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
@@ -381,7 +373,7 @@ function Card1() {
 
 function Card2() {
     return (
-        <div className="relative w-full h-full bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl overflow-hidden flex">
+        <div className="relative w-full h-full bg-background border border-border/50 rounded-2xl flex p-1">
 
             <div className="w-1/3 border-r border-border/50 bg-muted/20 p-3 flex-col gap-2 relative overflow-hidden z-10 hidden sm:flex">
                 <div className="text-[10px] uppercase font-bold text-muted-foreground mb-1 tracking-widest flex items-center gap-1">
@@ -430,7 +422,7 @@ function Card2() {
             <div className="absolute left-8 sm:left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                 <motion.div
                     animate={{ rotate: 360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    className="w-16 h-16 rounded-full border border-blue-500/30 flex items-center justify-center bg-background/50 backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.2)] relative"
+                    className="w-16 h-16 rounded-full border border-blue-500/30 flex items-center justify-center bg-background relative"
                 >
 
                     <motion.div
@@ -619,7 +611,7 @@ function Card2() {
 
 function Card3() {
     return (
-        <div className="relative w-full h-full bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl p-0 flex flex-col overflow-hidden group">
+        <div className="relative w-full h-full bg-background border border-border/50 rounded-2xl p-1 flex flex-col group">
             <div className="flex justify-between items-center p-3 border-b border-border/50 bg-muted/30 relative z-30 backdrop-blur-md">
                 <div className="flex items-center gap-3">
                     <div className="flex -space-x-1">
