@@ -1,7 +1,7 @@
 import "./globals.css";
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, Poppins } from "next/font/google";
+import { Inter, Instrument_Serif, Poppins, Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Providers } from "@/components/AuthUIProvider";
 
@@ -28,10 +28,26 @@ const instrumentSerif = Instrument_Serif({
   preload: true,
 });
 
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  preload: true,
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  preload: true,
+});
+
 export const metadata: Metadata = {
-  title: "BetterUptime - Uptime Monitoring & Logging Mentoring",
+  title: "BetterUptime — Infrastructure Monitoring & Centralized Logging",
   description:
-    "Monitor uptime and centralize logs with BetterUptime. Real-time alerts, unified logging, and intelligent incident collaboration for platforms that never go down.",
+    "Real-time uptime monitoring and centralized logging for platforms that never go down. Instant alerts, unified log streams, and intelligent incident collaboration.",
 };
 export default function RootLayout({
   children,
@@ -41,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${poppins.variable} antialiased`}
+      className={`${inter.variable} ${instrumentSerif.variable} ${poppins.variable} ${bricolage.variable} ${plusJakarta.variable} antialiased dark`}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,20 +66,12 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400&display=swap"
-        />
       </head>
-      <body className="font-sans antialiased bg-primary-foreground">
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <Providers>{children}</Providers>

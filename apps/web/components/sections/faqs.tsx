@@ -2,115 +2,106 @@
 
 import { useState } from "react";
 import Container from "./container";
-import Heading from "./heading";
-import SubHeading from "./subheading";
-import { AnimatePresence, motion } from "motion/react"
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { Plus, Minus } from "lucide-react";
 
-export type FAQItem = {
-    question: string;
-    answer: string;
-};
+const FAQS = [
+    {
+        q: "What does BetterUptime monitor?",
+        a: "HTTP/HTTPS endpoints, TCP ports, and custom health checks. We track uptime, response time, SSL certificate expiry, and more — all in real-time with sub-second precision.",
+    },
+    {
+        q: "How fast are the alerts?",
+        a: "Under 30 seconds. When a service goes down, you'll be notified via email, Slack, SMS, webhooks, or any of our 80+ integrations.",
+    },
+    {
+        q: "How does centralized logging work?",
+        a: "Send logs via our SDKs, syslog, or HTTP API. All logs are indexed, searchable, and available in a unified dashboard with powerful filtering and full-text search.",
+    },
+    {
+        q: "What integrations are supported?",
+        a: "80+ tools including Slack, PagerDuty, Datadog, AWS, Sentry, Microsoft Teams, Discord, and more. Custom webhooks let you connect anything.",
+    },
+    {
+        q: "Is my data secure?",
+        a: "All data is encrypted at rest and in transit. Enterprise plans include SSO/SAML, RBAC, and custom retention policies. SOC 2 Type II compliant.",
+    },
+    {
+        q: "Can I try it for free?",
+        a: "Yes — our Starter plan is free forever with up to 5 monitors, email alerts, and 7-day log retention. No credit card required.",
+    },
+];
 
 export default function FAQs() {
-    const FAQS: FAQItem[] = [
-        {
-            question: "What is Brillance and who is it for?",
-            answer:
-                "Brillance is an all-in-one business operations platform for managing schedules, analytics, and team collaboration. It’s built for startups, growing teams, and enterprises.",
-        },
-        {
-            question: "How does the custom contract billing work?",
-            answer:
-                "Enterprise pricing is tailored based on your team size and feature needs. Our sales team creates a flexible contract that fits your business.",
-        },
-        {
-            question: "Can I integrate Brillance with my existing tools?",
-            answer:
-                "Yes, Brillance supports integrations and API access on higher plans to connect with your existing tools and workflows.",
-        },
-        {
-            question: "What kind of support do you provide?",
-            answer:
-                "Starter includes community support, Professional offers priority support, and Enterprise provides 24/7 phone support with a dedicated manager.",
-        },
-        {
-            question: "Is my data secure with Brillance?",
-            answer:
-                "Yes, we use industry-standard encryption and secure infrastructure, with advanced security features available on Enterprise plans.",
-        },
-        {
-            question: "How do I get started with Brillance?",
-            answer:
-                "You can start for free with the Starter plan and upgrade anytime as your team grows.",
-        },
-    ];
+    const [open, setOpen] = useState<number | null>(null);
 
-    return <section>
-        <Container>
-            <div className="flex flex-col md:flex-row gap-12 justify-center py-12 md:py-24 lg:py-36 flex-1">
-                <div className="flex flex-col gap-4">
-                    <Heading
-                        as="h2"
-                        className="text-center md:text-left mx-auto md:mx-0 max-w-[90%] md:max-w-xl lg:max-w-4xl"
+    return (
+        <section id="faq" className="relative">
+            <Container className="py-20 md:py-28 lg:py-36 relative">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+                    {/* Left — sticky heading */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="md:col-span-4 md:sticky md:top-32 md:self-start"
                     >
-                        Frequently Asked Questions
-                    </Heading>
+                        <span className="text-[11px] font-semibold text-sky-400 tracking-[0.2em] uppercase mb-3 block">FAQ</span>
+                        <h2 className="font-display font-bold text-3xl md:text-4xl tracking-[-0.02em] text-white mb-3">
+                            Questions
+                            <br />
+                            <span className="text-slate-500">&amp; answers</span>
+                        </h2>
+                        <p className="text-sm text-slate-500 max-w-xs">
+                            Can&apos;t find what you&apos;re looking for? Reach out to our team.
+                        </p>
+                    </motion.div>
 
-                    <SubHeading
-                        as="p"
-                        className="max-w-[95%] md:max-w-xl lg:max-w-3xl mx-auto text-center md:text-left md:mx-0"
-                    >
-                        Explore the data, <br className="hidden md:block lg:hidden" /> build our dashboards,<br className="hidden md:block" /> bring you team together.
-                    </SubHeading>
+                    {/* Right — accordion */}
+                    <div className="md:col-span-8 flex flex-col">
+                        {FAQS.map((faq, i) => {
+                            const isOpen = open === i;
+                            return (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.04 }}
+                                    className="border-b border-slate-800/40"
+                                >
+                                    <button
+                                        onClick={() => setOpen(isOpen ? null : i)}
+                                        className="flex items-center justify-between w-full text-left py-5 group"
+                                    >
+                                        <span className={`text-sm md:text-base font-medium pr-4 transition-colors ${isOpen ? 'text-sky-300' : 'text-white group-hover:text-slate-200'}`}>
+                                            {faq.q}
+                                        </span>
+                                        <div className={`w-6 h-6 rounded-full border flex items-center justify-center shrink-0 transition-all duration-200
+                                            ${isOpen ? 'border-sky-500/30 bg-sky-500/10 text-sky-400' : 'border-slate-700 text-slate-500 group-hover:border-slate-600'}`}
+                                        >
+                                            {isOpen ? <Minus className="w-3 h-3" /> : <Plus className="w-3 h-3" />}
+                                        </div>
+                                    </button>
+                                    <AnimatePresence>
+                                        {isOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: "auto" }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                                className="overflow-hidden"
+                                            >
+                                                <p className="text-sm text-slate-400 leading-relaxed pb-5 max-w-lg">{faq.a}</p>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
                 </div>
-
-                <div className="flex flex-col gap-6 md:gap-12 flex-1 max-w-2xl mx-auto">
-                    {FAQS.map((faq, index) => (
-                        <FAQ key={index} faq={faq} />
-                    ))}
-                </div>
-            </div>
-        </Container>
-    </section>
-}
-
-function FAQ({ faq }: { faq: FAQItem }) {
-    const [open, setOpen] = useState(false);
-
-    return <motion.div
-        onClick={() => setOpen(!open)}
-        className="flex flex-col px-4">
-
-        <div className="flex items-center justify-between">
-            <h3 className="font-medium font-poppins">{faq.question}</h3>
-            {open ? <ChevronUp className="shrink-0 w-4 h-4" /> : <ChevronDown className="shrink-0 w-4 h-4" />}
-        </div>
-        <AnimatePresence>
-            {open && <motion.p
-                initial={{
-                    opacity: 0,
-                    height: 0,
-                    filter: "blur(2px)",
-                    marginTop: 0
-                }}
-                animate={{
-                    opacity: 1,
-                    height: "auto",
-                    filter: "blur(0px)",
-                    marginTop: 8
-                }}
-                exit={{
-                    opacity: 0,
-                    height: 0,
-                    filter: "blur(2px)",
-                    marginTop: 0
-                }}
-                transition={{
-                    duration: 0.3,
-                    ease: "easeOut"
-                }}
-                className="text-sm text-muted-foreground max-w-[95%]">{faq.answer}</motion.p>}
-        </AnimatePresence>
-    </motion.div>
+            </Container>
+        </section>
+    );
 }
